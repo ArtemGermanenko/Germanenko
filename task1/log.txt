@@ -1,0 +1,11 @@
+commit d03e941f6157674d1b710f6148c7ae3f147d0da4 (HEAD -> master)
+Author: ArtemGermanenko <artemgermanenko67@gmail.com>
+Date:   Tue Feb 6 16:57:18 2018 +0300
+
+    add status.txt
+
+commit b86da0865f09173e2bf157e521b92ed575117269
+Author: ArtemGermanenko <artemgermanenko67@gmail.com>
+Date:   Tue Feb 6 16:46:01 2018 +0300
+
+    add .gitignore
