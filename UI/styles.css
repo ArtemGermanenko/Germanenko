@@ -248,10 +248,10 @@ section {
 
 @media screen and (max-width: 1000px) {
     .filter {
-        margin: 0px 0 0 0;
+        margin: 0;
         position: fixed;
-        height: 3.2%;
-        padding: -10px 0px 10px 0px;
+        height: 3%;
+        padding: 0px 0px 10px 0px;
         width: 100%;
     }
 
