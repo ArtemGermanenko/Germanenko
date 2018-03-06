@@ -188,29 +188,32 @@ let main_module = (function() {
 
     return {
         getPhotoPosts: function(skip, top, filterConfig) {
-            if (typeof skip !== 'number')
+            if (typeof skip !== 'number') {
                 skip = 0;
+            }
 
-            if (typeof top !== 'number')
+            if (typeof top !== 'number') {
                 top = 10;
+            }
 
-            if (filterConfig !== undefined) {
+            if (filterConfig) {
                 let photoPostsToRemake = photoPosts;
                 if (filterConfig.author)
-                    photoPostsToRemake = photoPostsToRemake.filter(author => author.author === filterConfig.author);
+                    photoPostsToRemake = photoPostsToRemake.filter(post => post.author === filterConfig.author);
                 if (filterConfig.hashtags) {
-                    photoFilterResult = photoFilterResult.filter(hash => {
+                    photoFilterResult = photoFilterResult.filter(post => {
                         return filterConfig.hashTags.every((tag) => {
-                            return hash.hashTags.includes(tag);
+                            return post.hashTags.includes(tag);
                         });
                     });
                 }
 
-                if (filterConfig.createdAt)
-                    photoPostsToRemake = photoPostsToRemake.filter(Date =>
-                        Date.createdAt.getFullYear() === filterConfig.createdAt.getFullYear() &&
-                        Date.createdAt.getMonth() === filterConfig.createdAt.getMonth() &&
-                        Date.createdAt.getDate() === filterConfig.createdAt.getDate());
+                if (filterConfig.createdAt) {
+                    photoPostsToRemake = photoPostsToRemake.filter(post =>
+                        post.createdAt.getFullYear() === filterConfig.createdAt.getFullYear() &&
+                        post.createdAt.getMonth() === filterConfig.createdAt.getMonth() &&
+                        post.createdAt.getDate() === filterConfig.createdAt.getDate());
+                }
 
                 return photoPostsToRemake.slice(skip, skip + top);
             }
@@ -222,42 +225,77 @@ let main_module = (function() {
         },
 
         validatePhotoPost: function(photoPost) {
-            if (typeof photoPost.description !== 'string' || photoPost.description.length === 0 || typeof photoPost.author !== 'string' ||
-                photoPost.author.length === 0 || typeof photoPost.id !== 'string' || photoPost.id.length === 0 || !(photoPost.createdAt instanceof Date) ||
-                typeof photoPost.photoLink !== 'string' ||
-                photoPost.photoLink.length === 0 || !(photoPost.hashTags instanceof Array) || !(photoPost.likes instanceof Array))
+            if (typeof photoPost.description !== 'string') {
                 return false;
+            }
+            if (photoPost.description.length === 0) {
+                return false;
+            }
+            if (typeof photoPost.author !== 'string') {
+                return false;
+            }
+            if (photoPost.author.length === 0) {
+                return false;
+            }
+            if (typeof photoPost.id !== 'string') {
+                return false;
+            }
+            if (photoPost.id.length === 0) {
+                return false;
+            }
+            if (typeof photoPost.photoLink !== 'string') {
+                return false;
+            }
+            if (photoPost.photoLink.length === 0) {
+                return false;
+            }
+            if (!(photoPost.createdAt instanceof Date)) {
+                return false;
+            }
+            if (!(photoPost.hashTags instanceof Array)) {
+                return false;
+            }
+            if (!(photoPost.likes instanceof Array)) {
+                return false;
+            }
             return true;
         },
 
         addPhotoPost: function(photoPost) {
-            if (!this.validatePhotoPost(photoPost) || photoPosts.findIndex(index => index.id === photoPost.id) !== -1)
+            if (!this.validatePhotoPost(photoPost) || photoPosts.findIndex(index => index.id === photoPost.id) !== -1) {
                 return false;
+            }
             photoPosts.push(photoPost);
             photoPosts.sort(compare);
             return true;
         },
 
         editPhotoPost: function(ID, photoPost) {
-            if (this.validatePhotoPost(photoPost))
+            let index = photoPosts.findIndex(post => post.id === ID);
+            if (!this.validatePhotoPost(photoPosts[index])) {
                 return false;
-            let index = photoPosts.findIndex(elem => elem.id === ID);
-            if (photoPost.author || photoPost.id || photoPost.createdAt || index === -1)
+            }
+            if (photoPost.author || photoPost.id || photoPost.createdAt || index === -1) {
                 return false;
-            if (photoPost.description)
+            }
+            if (photoPost.description) {
                 photoPosts[index].description = photoPost.description;
-            if (photoPost.photoLink)
+            }
+            if (photoPost.photoLink) {
                 photoPosts[index].photoLink = photoPost.photoLink;
-            if (photoPost.hashTags)
+            }
+            if (photoPost.hashTags) {
                 photoPosts[index].hashTags = photoPost.hashTags;
-            if (photoPost.likes)
+            }
+            if (photoPost.likes) {
                 photoPosts[index].likes = photoPost.likes;
+            }
             return true;
         },
 
         removePhotoPost: function(ID) {
-            if (photoPosts.findIndex(elem => elem.id == ID) !== -1) {
-                photoPosts.splice(photoPosts.findIndex(elem => elem.id == ID), 1);
+            if (photoPosts.findIndex(post => post.id == ID) !== -1) {
+                photoPosts.splice(photoPosts.findIndex(post => post.id == ID), 1);
                 return true;
             }
             return false;
@@ -282,7 +320,7 @@ console.log(main_module.validatePhotoPost(main_module.getPhotoPost('7')));
 console.log('Check addPhotoPost');
 console.log(main_module.addPhotoPost(photoPosttoAdd));
 console.log(photoPosts);
-console.log(main_module.addPhotoPost({descriptin: 'bad args'}));
+console.log(main_module.addPhotoPost({description: 'bad args'}));
 console.log('Check editPhotoPost');
 console.log(main_module.editPhotoPost('1', {description: "hi my hero superman", likes: ['nobody']}));
 console.log(main_module.editPhotoPost('1', {  author: 'bad args'}));
