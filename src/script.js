@@ -10,11 +10,11 @@ var photoPosts = [{
 
     {
         id: '2',
-        description: 'bbbbbbbbbbbbbbbbbb',
-        createdAt: new Date('2018-02-23T23:00:00'),
-        author: 'Andry Ginzburg',
+        description: 'aaaaaaaaaaaaaaaaa',
+        createdAt: new Date('2017-02-23T23:00:00'),
+        author: 'Artem Germanenko',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: 1,
+        hashTags: ['#NiceWorld', '#HelloWorld'],
         likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
     },
     {
@@ -28,9 +28,9 @@ var photoPosts = [{
     },
     {
         id: '4',
-        description: 'ddddddddddddddddddd',
-        createdAt: new Date('2010-10-23T11:11:10'),
-        author: 'Karasik Simon',
+        description: 'aaaaaaaaaaaaaaaaa',
+        createdAt: new Date('2017-02-23T23:00:00'),
+        author: 'Artem Germanenko',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashTags: ['#NiceWorld', '#HelloWorld'],
         likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
@@ -55,10 +55,12 @@ var photoPosts = [{
     },
     {
         id: '7',
-        description: '',
+        description: 'asdasffaf',
         createdAt: new Date('2016-02-23T23:00:00'),
         author: 'Kovchugo Ksu',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashTags: ['#NiceWorld', '#HelloWorld'],
+        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
     },
     {
         id: '8',
@@ -76,6 +78,7 @@ var photoPosts = [{
         author: 'Kukel Jenya',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashTags: ['#NiceWorld', '#HelloWorld'],
+         likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
     },
     {
         id: '10',
@@ -132,11 +135,13 @@ var photoPosts = [{
         likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
     },
     {
-        id: '16',
-        description: 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk',
+       id: '16',
+        description: 'aaaaaaaaaaaaaaaaa',
         createdAt: new Date('2017-02-23T23:00:00'),
-        author: 'Shatrova Dasha',
+        author: 'Artem Germanenko',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashTags: ['#NiceWorld', '#HelloWorld'],
+        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
     },
     {
         id: '17',
@@ -303,7 +308,7 @@ let main_module = (function() {
     }
 })();
 
-console.log('All posts:');
+/*console.log('All posts:');
 console.log(photoPosts);
 console.log('Check getPhotoPosts');
 console.log(main_module.getPhotoPosts(0, 10));
@@ -328,5 +333,5 @@ console.log(photoPosts);
 console.log('Check removePhotoPost');
 console.log(main_module.removePhotoPost('10'));
 console.log(main_module.removePhotoPost('100'));
-console.log(photoPosts);
+console.log(photoPosts);*/
 

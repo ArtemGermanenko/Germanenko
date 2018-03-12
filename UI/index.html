@@ -3,194 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="src/script.js"></script>
     <title>PhotoIsLife</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="SHORTCUT ICON" href="http://x-lines.ru/letters/i/cyrillicdreamy/2074/000000/14/0/ky.png" type="image/x-icon">
 </head>
 <body>
+
 <header class="shadow">
     <div class="container">
         <img src="http://x-lines.ru/letters/i/cyrillicdreamy/2074/ffffff/60/0/kbwwa.png" height="30" width="90"
              alt="Логотип" class="logo">
     </div>
-    <i class="add material-icons md-48" title="Add photo">add</i>
-    <i class="exit material-icons md-48" title="Exit">close</i>
-    <i class="username">Artem</i>
+    <div class="add material-icons md-48" title="Add photo">add</div>
+    <div class="exit material-icons md-48" title="Exit">close</div>
+    <div class="username">Artem</div>
 </header>
+
 <section>
-    <div class="my-flex-container">
-        <div class="my-flex-block shadow">
-            <div class="top_margin">
-                Artem Germanenko
-                <i class="date">18:53 13.04.2017</i>
-            </div>
-            <img src="http://www.rabstol.net/uploads/gallery/comthumb/267/rabstol_net_sea_26.jpg" class="photo">
-            <div class="bottom_margin">
-                <i class="like material-icons md-48">favorite_border</i>
-                <p class="hashtags">#SoBeautiful#Haveaniceday</p>
-                <i class="edit material-icons md-48">create</i>
-            </div>
-            <p class="comments">
-                This picture is the perfect venue to demonstrate to the entire community how happy you are.
-            </p>
-        </div>
-        <div class="my-flex-block shadow">
-            <div class="top_margin">
-                Andrey Ginzburg
-                <i class="date">14:36 11.12.2016</i>
-            </div>
-            <img src="http://bipbap.ru/wp-content/uploads/2017/05/Krasivaya-priroda.jpg" class="photo">
-            <div class="bottom_margin">
-                <i class="like material-icons md-48">favorite_border</i>
-                <p class="hashtags">#SoBeautiful#Haveaniceday</p>
-                <i class="edit material-icons md-48">create</i>
-            </div>
-            <p class="comments">
-                This picture is the perfect venue to demonstrate to the entire community how happy you are.
-            </p>
-        </div>
-    </div>
-    <div class="filter">
+  <div id='posts'>
+    
+   </div>
+   <div class="filter">
         <p class="filter_text">Filters:</p>
         <input type="text" class="input_name" placeholder="Username">
         <input type="text" class="input_name" placeholder="#Hastag">
         <input type="text" class="input_name" placeholder="Date: dd.mm.yyyy">
-    </div>
-    <div class="my-flex-container">
-        <div class="my-flex-block shadow">
-            <div class="top_margin">
-                Simon Karasik
-                <i class="date">04:33 13.11.2015</i>
-            </div>
-            <img src="http://katyaburg.ru/sites/default/files/pictures/krasota_prirody/priroda_kartinki_foto_03.jpg"
-                 class="photo">
-            <div class="bottom_margin">
-                <i class="like material-icons md-48">favorite_border</i>
-                <p class="hashtags">#SoBeautiful#Haveaniceday</p>
-                <i class="edit material-icons md-48">create</i>
-            </div>
-            <p class="comments">
-                This picture is the perfect venue to demonstrate to the entire community how happy you are.
-            </p>
-        </div>
-        <div class="my-flex-block shadow">
-            <div class="top_margin">
-                Ksu Karabanova
-                <i class="date">14:36 11.12.2016</i>
-            </div>
-            <img src="http://trinixy.ru/pics3/20080124/podb/6/krasota_01.jpg"
-                 class="photo">
-            <div class="bottom_margin">
-                <i class="like material-icons md-48">favorite_border</i>
-                <p class="hashtags">#SoBeautiful#Haveaniceday</p>
-                <i class="edit material-icons md-48">create</i>
-            </div>
-            <p class="comments">
-                This picture is the perfect venue to demonstrate to the entire community how happy you are.
-            </p>
-        </div>
-    </div>
-    <div class="my-flex-container">
-        <div class="my-flex-block shadow">
-            <div class="top_margin">
-                Kobzev Dima
-                <i class="date">18:53 13.04.2017</i>
-            </div>
-            <img src="http://dreem-pics.com/uploads/posts/2017-02/1487290140_vesna_vesennie_peyzagi_foto_04.jpg"
-                 class="photo">
-            <div class="bottom_margin">
-                <i class="like material-icons md-48">favorite_border</i>
-                <p class="hashtags">#SoBeautiful#Haveaniceday</p>
-                <i class="edit material-icons md-48">create</i>
-            </div>
-            <p class="comments">
-                This picture is the perfect venue to demonstrate to the entire community how happy you are.
-            </p>
-        </div>
-        <div class="my-flex-block shadow">
-            <div class="top_margin">
-                Kovchugo Ksu
-                <i class="date">14:36 11.12.2016</i>
-            </div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwuAoOXO6MwrTcNCyw4Btchzo_y4o1tx7WH21tHfnJOVU28rziyw"
-                 class="photo">
-            <div class="bottom_margin">
-                <i class="like material-icons md-48">favorite_border</i>
-                <p class="hashtags">#SoBeautiful#Haveaniceday</p>
-                <i class="edit material-icons md-48">create</i>
-            </div>
-            <p class="comments">
-                This picture is the perfect venue to demonstrate to the entire community how happy you are.
-            </p>
-        </div>
-    </div>
-    <div class="my-flex-container">
-        <div class="my-flex-block shadow">
-            <div class="top_margin">
-                Alex Kovalchuck
-                <i class="date">18:53 13.04.2017</i>
-            </div>
-            <img src="http://relaxic.net/wp-content/uploads/2016/04/New-England_00003.jpg" class="photo">
-            <div class="bottom_margin">
-                <i class="like material-icons md-48">favorite_border</i>
-                <p class="hashtags">#SoBeautiful#Haveaniceday</p>
-                <i class="edit material-icons md-48">create</i>
-            </div>
-            <p class="comments">
-                This picture is the perfect venue to demonstrate to the entire community how happy you are.
-            </p>
-        </div>
-        <div class="my-flex-block shadow">
-            <div class="top_margin">
-                Kozlovsky Vlad
-                <i class="date">14:36 11.12.2016</i>
-            </div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSegW65dP7IwokXDG095nIvy6KidtjWXld3vndyJePnCuu3RTv7"
-                 class="photo">
-            <div class="bottom_margin">
-                <i class="like material-icons md-48">favorite_border</i>
-                <p class="hashtags">#SoBeautiful#Haveaniceday</p>
-                <i class="edit material-icons md-48">create</i>
-            </div>
-            <p class="comments">
-                This picture is the perfect venue to demonstrate to the entire community how happy you are.
-            </p>
-        </div>
-    </div>
-    <div class="my-flex-container">
-        <div class="my-flex-block shadow">
-            <div class="top_margin">
-                Spider-Man
-                <i class="date">18:53 13.04.2017</i>
-            </div>
-            <img src="https://www.gamestop.com/gs/images/content-pdp/gameinformer/spidermannewscreen1-610.jpg"
-                 class="photo">
-            <div class="bottom_margin">
-                <i class="like material-icons md-48">favorite_border</i>
-                <p class="hashtags">#SoBeautiful#Haveaniceday</p>
-                <i class="edit material-icons md-48">create</i>
-            </div>
-            <p class="comments">
-                This picture is the perfect venue to demonstrate to the entire community how happy you are.
-            </p>
-        </div>
-        <div class="my-flex-block shadow">
-            <div class="top_margin">
-                Batman(Bruse Yane)
-                <i class="date">14:36 11.12.2016</i>
-            </div>
-            <img src="https://www.lego.com/r/www/r/catalogs/-/media/catalogs/characters/lbm%20characters/primary/70900_1to1_batman_360_480.png?l.r=1668006940"
-                 class="photo">
-            <div class="bottom_margin">
-                <i class="like material-icons md-48">favorite_border</i>
-                <p class="hashtags">#SoBeautiful#Haveaniceday</p>
-                <i class="edit material-icons md-48">create</i>
-            </div>
-            <p class="comments">
-                This picture is the perfect venue to demonstrate to the entire community how happy you are.
-            </p>
-        </div>
     </div>
     <button class="load_more">Load more</button>
 </section>
@@ -201,4 +40,6 @@
     <div class="name_footer">Artem Germanenko 5 group, artemgermanenko67@gmail.com</div>
 </footer>
 </body>
+<script src="../src/script.js"></script>
+<script src="../src/DomApi.js"></script>
 </html>
