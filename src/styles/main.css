@@ -12,7 +12,7 @@ header {
     top: 0;
     width: 100%;
     height: 52px;
-    background-color: #4682B4;
+    background-color: #2a5885;
 
 }
 
@@ -26,12 +26,18 @@ footer {
     align-items: center;
 }
 
-section {
+#main{
     display: flex;
     flex-direction: column;
     padding-top: 52px;
     width: 75%;
-    min-height: 1000px;
+}
+
+#login{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 650px;
 }
 
 .container {
@@ -45,10 +51,14 @@ section {
     float: left;
 }
 
+.my-flex-block{
+    border:2px;
+}
+
 .my-flex-container {
     display: grid;
     grid-gap: 47px;
-    grid-template-columns: repeat(auto-fill, minmax(299px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     padding: 30px 60px;
 }
 
@@ -97,6 +107,15 @@ section {
     color: #FF0000;
 }
 
+.likered{
+     color: #FF0000;
+     cursor: pointer;
+}
+
+.likered:hover {
+    color: #A9A9A9;
+}
+
 .comments {
     background-color: #FFFFFF;
     color: #4682B4;
@@ -104,6 +123,7 @@ section {
     padding: 0 25px 10px;
     margin-top: 0;
     margin-bottom: 0;
+    padding-left: 10px;
 }
 
 .hashtags {
@@ -123,6 +143,7 @@ section {
 }
 
 .filter {
+    display: none;
     position: fixed;
     margin-top: 0;
     margin-left: 75%;
@@ -151,9 +172,9 @@ section {
     cursor: pointer;
 }
 
-.add:hover {
-    background: #2a5885;
-}
+/*.add:hover {
+    background-color: #FFFFFF;
+}*/
 
 .exit {
     color: #FFFFFF;
@@ -163,9 +184,9 @@ section {
     cursor: pointer;
 }
 
-.exit:hover {
-    background: #2a5885;
-}
+/*.exit:hover {
+    background: #FFFFFF;
+}*/
 
 .signin{
     color: #FFFFFF;
@@ -187,6 +208,7 @@ section {
 }
 
 .load_more {
+    display: none;
     margin: 0 50% 20px 50%;
     background: #F5F5F5;
     width: 20%;
@@ -286,6 +308,14 @@ section {
         margin: 0 10px 0 10px;
     }
 
+    .blink1{
+        margin-left: 20%;
+    }
+
+    .date_footer{
+        display: none;
+    }
+
     .name_footer {
         display: none;
     }
@@ -313,7 +343,96 @@ section {
     }
 }
 
+#login-form {
+    background-color: #ADD8E6;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin: 90px auto;
+    width: 300px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+  -webkit-box-shadow:  0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+   box-shadow:  0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+   margin-bottom: 300px;
+
+}
+
+#login-form h1 {
+    background-color: #2a5885;
+    border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+#login-form fieldset {
+    border: none;
+    padding: 20px;
+    position: relative;
+}
 
 
+#login-form fieldset form {
+    overflow: hidden;
+    width: 270px;
+}
 
+#login-form fieldset form input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    outline: none;
+  -webkit-appearance:none;
+  width: 260px;
+  align: center;
+  position: center;
 
+}
+
+#login-form fieldset form input[class="email"] {
+    border: 1px solid #292829;
+    color: #C0C0C0;
+    border-radius: 3px 3px 0px 0px;
+    -moz-border-radius: 3px 3px 0px 0px;
+    -webkit-border-radius: 3px 3px 0px 0px;
+    padding: 12px 10px;
+    width: 238px;
+  -webkit-appearance:none;
+}
+
+#login-form fieldset form input[class="password"] {
+    border: 1px solid #292829;
+    border-top: none;
+     color: #C0C0C0;
+    border-radius: 0px 0px 3px 3px;
+    -moz-border-radius: 0px 0px 3px 3px;
+    -webkit-border-radius: 0px 0px 3px 3px;
+    padding: 12px 10px;
+    width: 238px;
+  -webkit-appearance:none;
+}
+
+#login-form fieldset form input[type="submit"] {
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color:  #2a5885;
+    cursor: pointer;
+    float: none;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 12px 12px;
+    -webkit-appearance: none;
+}
+
+#login-form fieldset form input[type="submit"]:hover {
+    background-color: #2a5885;
+    color: #FFFFFF;
+}

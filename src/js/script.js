@@ -15,7 +15,7 @@ var photoPosts = [{
         author: 'Artem Germanenko',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
+        likes: [ 'Ksu Karabanova', 'Simon Karasik']
     },
     {
         id: '3',
@@ -33,7 +33,7 @@ var photoPosts = [{
         author: 'Artem Germanenko',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
+        likes: [ 'Ksu Karabanova', 'Simon Karasik']
     },
     {
         id: '5',
@@ -51,7 +51,7 @@ var photoPosts = [{
         author: 'Kozlovski Vlad',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
+        likes: [ 'Ksu Karabanova', 'Simon Karasik']
     },
     {
         id: '7',
@@ -60,7 +60,7 @@ var photoPosts = [{
         author: 'Kovchugo Ksu',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
+        likes: ['Ksu Karabanova', 'Simon Karasik']
     },
     {
         id: '8',
@@ -69,7 +69,7 @@ var photoPosts = [{
         author: 'Kobzev Dmitry',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
+        likes: ['Ksu Karabanova', 'Simon Karasik']
     },
     {
         id: '9',
@@ -105,7 +105,7 @@ var photoPosts = [{
         author: 'Malina Vlad',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
+        likes: [ 'Ksu Karabanova', 'Simon Karasik']
     },
     {
         id: '13',
@@ -127,12 +127,12 @@ var photoPosts = [{
     },
     {
         id: '15',
-        description: 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu',
+        description: 'uuuuuuuuuuuuuuuuuuu',
         createdAt: new Date('2018-02-23T23:00:00'),
         author: 'Sidirova Yana',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
+        likes: [ 'Ksu Karabanova', 'Simon Karasik']
     },
     {
        id: '16',
@@ -150,7 +150,7 @@ var photoPosts = [{
         author: 'Manzhulina Elizaveta',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
+        likes: ['Ksu Karabanova', 'Simon Karasik']
     },
     {
         id: '18',
@@ -277,13 +277,10 @@ let main_module = (function() {
 
         editPhotoPost: function(ID, photoPost) {
             let index = photoPosts.findIndex(post => post.id === ID);
-            if(index === -1){
-                return false;
-            }
             if (!this.validatePhotoPost(photoPosts[index])) {
                 return false;
             }
-            if (photoPost.author || photoPost.id || photoPost.createdAt) {
+            if (photoPost.author || photoPost.id || photoPost.createdAt || index === -1) {
                 return false;
             }
             if (photoPost.description) {
@@ -331,10 +328,9 @@ console.log(photoPosts);
 console.log(main_module.addPhotoPost({description: 'bad args'}));
 console.log('Check editPhotoPost');
 console.log(main_module.editPhotoPost('1', {description: "hi my hero superman", likes: ['nobody']}));
-console.log(main_module.editPhotoPost('10500', {  author: 'bad args'}));
+console.log(main_module.editPhotoPost('1', {  author: 'bad args'}));
 console.log(photoPosts);
 console.log('Check removePhotoPost');
 console.log(main_module.removePhotoPost('10'));
 console.log(main_module.removePhotoPost('100'));
 console.log(photoPosts);*/
-

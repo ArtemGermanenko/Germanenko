@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="src/script.js"></script>
     <title>PhotoIsLife</title>
-    <link rel="stylesheet" href="styles.css" type="text/css">
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="SHORTCUT ICON" href="http://x-lines.ru/letters/i/cyrillicdreamy/2074/000000/14/0/ky.png" type="image/x-icon">
 </head>
@@ -16,16 +15,14 @@
         <img src="http://x-lines.ru/letters/i/cyrillicdreamy/2074/ffffff/60/0/kbwwa.png" height="30" width="90"
              alt="Логотип" class="logo">
     </div>
-    <div class="add material-icons md-48" title="Add photo">add</div>
-    <div class="exit material-icons md-48" title="Exit">close</div>
-    <div class="username">Artem</div>
+    <div class="add material-icons md-48" title="Add photo"></div>
+    <div class="exit material-icons md-48" title="Exit"></div>
+    <div class="username"></div> 
 </header>
 
-<section>
+<section id="main">
   <div id='posts'>
-  	<div class="my-flex-container">
 
-  	</div>
    </div>
    <div class="filter">
         <p class="filter_text">Filters:</p>
@@ -33,7 +30,20 @@
         <input type="text" class="input_name" placeholder="#Hastag">
         <input type="text" class="input_name" placeholder="Date: dd.mm.yyyy">
     </div>
-    <button class="load_more">Load more</button>
+    <button class="load_more" onclick="Load_more_button()">Load more</button>
+</section>
+
+<section id="login">
+    <div id="login-form">
+      <h1>Authorization</h1>
+      <fieldset>
+      <form action="javascript:void(0);" method="get">
+      <input class="email" required value="Guest" onBlur="if(this.value==='')this.value='Guest'" onFocus="if(this.value==='Guest')this.value='' ">
+      <input class="password" required value="Press Enter if you are not registered" onBlur="if(this.value==='')this.value='Press Enter if you are not registered'" onFocus="if(this.value==='Press Enter if you are not registered')this.value='' ">
+      <input type="submit" value="Enter" onclick="Main_Page(document.getElementsByClassName('email')[0].value, document.getElementsByClassName('password')[0].value)">
+      </form>
+      </fieldset>
+      </div>
 </section>
 
 <footer>
@@ -41,7 +51,7 @@
     <div class="date_footer">Last update: 25.02.2018</div>
     <div class="name_footer">Artem Germanenko 5 group, artemgermanenko67@gmail.com</div>
 </footer>
-<script src="script.js"></script>
-<script src="DomAPI.js"></script>
 </body>
+<script src="js/script.js"></script>
+<script src="js/DomAPI.js"></script>
 </html>
