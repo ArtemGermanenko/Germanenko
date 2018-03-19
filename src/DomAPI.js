@@ -1,7 +1,7 @@
 //module
 let DomAPI = (function() {
 
-    let user = 'Artem Germanenko';
+    const user = 'Artem Germanenko';
 
     if (user) {
         document.getElementsByClassName('username')[0].childNodes[0].textContent = user;
@@ -19,134 +19,106 @@ let DomAPI = (function() {
     return {
         createPhotoPost: function(post) {
             if (main_module.validatePhotoPost(post)) {
-                let postHTML = `
+                const postHTML = `
                 <div class="top_margin">
-                ${post.author}
-                <i class="date">${post.createdAt}</i>
+                 ${post.author}
+                 <i class="date">${post.createdAt}</i>
                 </div>
-                <img src="${post.photoLink}"
-                class="photo">
-
-                ${
-                    post.author === user ?
-                    `
-                    <div class="bottom_margin">
-                    <i class="like material-icons md-48">favorite_border</i>
-                    <p class="hashtags">${post.hashTags}</p>
-                    <i class="edit material-icons md-48">create</i>
-                    </div>
-                    `
-                    :
-                    `
-                    <div class="bottom_margin">
-                    <i class="like material-icons md-48">favorite_border</i>
-                    <p class="hashtags">${post.hashTags}</p>
-                    </div>
-                    `
-                }
-                <p class="comments">
-                ${post.description}
-                </p>`;
+                <img src="${post.photoLink}" class="photo">
+                <div class="bottom_margin">
+                 <i class="like material-icons md-48">favorite_border</i>
+                 <p class="hashtags">${post.hashTags}</p>
+                  ${user === post.author ? `<i class="edit material-icons md-48">create</i>` : ``}
+                </div>
+                <p class="comments">${post.description}</p>`;
                 return postHTML;
             } else {
                 return false;
             }
         },
 
-
         addPhotoPost: function(photoPost) {
+            this.createDivPosts();
+
             photoPost.createdAt = new Date();
             if (main_module.addPhotoPost(photoPost)) {
-                createPhotoPost(photoPost);
+                this.createPhotoPost(photoPost);
                 return true;
-            } else return false;
+            } else {
+                return false
+            };
         },
 
         removePhotoPost: function(id) {
             if (main_module.removePhotoPost(id)) {
+                this.createDivPosts();
                 return true;
-            } else return false;
+            } else {
+                return false
+            };
         },
 
         showPosts: function(photoPosts) {
-            let section = document.getElementById('posts');
-            let size = photoPosts.length;
-            if (size % 2 === 0) {
-                size = size / 2;
-            } else {
-                size = size / 2 - 0.5 + 1;
-            }
-            let index = 0;
-            let block;
+            let section = document.getElementById("posts");
+            let block = document.getElementsByClassName("my-flex-container")[0];
             let detail;
-            for (let i = 0; i < size; i++) {
-                block = document.createElement('div');
-                block.classList.add('my-flex-container');
-
+            for (let i = 0; i < photoPosts.length; i++) {
                 detail = document.createElement('div');
                 detail.classList.add('my-flex-block');
                 detail.classList.add('shadow');
-                detail.id = photoPosts[index].id;
-                detail.innerHTML = this.createPhotoPost(photoPosts[index]);
+                detail.id = photoPosts[i].id;
+                detail.innerHTML = this.createPhotoPost(photoPosts[i]);
                 block.appendChild(detail);
-                index++;
-                if (index !== photoPosts.length) {
-                    detail = document.createElement('div');
-                    detail.classList.add('my-flex-block');
-                    detail.classList.add('shadow');
-                    detail.id = photoPosts[index].id;
-                    detail.innerHTML = this.createPhotoPost(photoPosts[index]);
-                    block.appendChild(detail);
-                    index++;
-                }
-                section.appendChild(block);
+            }
+            section.appendChild(block);
+        },
+
+        editPhotoPost: function(id, post) {
+            if (main_module.editPhotoPost(id, post)) {
+                this.createDivPosts();
+                return true;
+            } else {
+                return false;
             }
         },
 
-        editPhotoPost(id, post) {
-            let postToEdit = document.getElementById(id);
-            if (postToEdit) {
-                let elem = document.createElement('div');
-                elem.classList.add('shadow');
-                elem.id = id;
-                elem.innerHTML = this.createPhotoPost(post);
-                postToEdit.replaceWith(elem);
-            }
-        }
+        createDivPosts: function() {
+            const divHTML = `
+            <div class="my-flex-container">
+            </div> `;
+            let element = document.getElementById("posts");
+            element.innerHTML = divHTML;
+        },
     }
 })();
 
-function displayPosts() {
-    let section = document.getElementById('posts');
-    while (section.lastChild)
-        section.lastChild.remove();
-    DomAPI.showPosts(main_module.getPhotoPosts(0, 10, undefined));
+function displayPosts(skip, top, filterCongig) {
+    DomAPI.showPosts(main_module.getPhotoPosts(skip, top, filterCongig));
 }
 
 function addPhotoPost(post) {
-    if (main_module.addPhotoPost(post)) {
-        let feed = document.getElementById('posts');
-
-        while (feed.lastChild)
-            feed.lastChild.remove();
-
-        DomAPI.showPosts(main_module.getPhotoPosts());
+    if (DomAPI.addPhotoPost(post)) {
+        displayPosts();
         return true;
-    } else return false;
+    } else {
+        return false;
+    }
 }
 
 function removePhotoPost(id) {
     if (DomAPI.removePhotoPost(id)) {
         displayPosts();
         return true;
+    } else {
+        return false;
     }
-    return false;
 }
 
 function editPhotoPost(id, newPost) {
-    if (main_module.editPhotoPost(id, newPost)) {
-        DomAPI.editPhotoPost(id, main_module.getPhotoPost(id));
+    if (DomAPI.editPhotoPost(id, newPost)) {
+        displayPosts();
         return true;
-    } else
+    } else {
         return false;
+    }
 }

@@ -277,10 +277,13 @@ let main_module = (function() {
 
         editPhotoPost: function(ID, photoPost) {
             let index = photoPosts.findIndex(post => post.id === ID);
+            if(index === -1){
+                return false;
+            }
             if (!this.validatePhotoPost(photoPosts[index])) {
                 return false;
             }
-            if (photoPost.author || photoPost.id || photoPost.createdAt || index === -1) {
+            if (photoPost.author || photoPost.id || photoPost.createdAt) {
                 return false;
             }
             if (photoPost.description) {
@@ -328,7 +331,7 @@ console.log(photoPosts);
 console.log(main_module.addPhotoPost({description: 'bad args'}));
 console.log('Check editPhotoPost');
 console.log(main_module.editPhotoPost('1', {description: "hi my hero superman", likes: ['nobody']}));
-console.log(main_module.editPhotoPost('1', {  author: 'bad args'}));
+console.log(main_module.editPhotoPost('10500', {  author: 'bad args'}));
 console.log(photoPosts);
 console.log('Check removePhotoPost');
 console.log(main_module.removePhotoPost('10'));
