@@ -1,188 +1,4 @@
-var photoPosts = [{
-        id: '1',
-        description: 'aaaaaaaaaaaaaaaaa',
-        createdAt: new Date('2017-02-23T23:00:00'),
-        author: 'Artem Germanenko',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-
-    {
-        id: '2',
-        description: 'aaaaaaaaaaaaaaaaa',
-        createdAt: new Date('2017-02-23T23:00:00'),
-        author: 'Artem Germanenko',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: [ 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '3',
-        description: 'ccccccccccccccccccc',
-        createdAt: new Date('2015-11-23T12:30:25'),
-        author: 'Karabanova Ksu',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '4',
-        description: 'aaaaaaaaaaaaaaaaa',
-        createdAt: new Date('2017-02-23T23:00:00'),
-        author: 'Artem Germanenko',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: [ 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '5',
-        description: 'eeeeeeeeeeeeeeeeeee',
-        createdAt: new Date('2011-11-11T11:00:00'),
-        author: 'Kovalchuck Alex',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '6',
-        description: 'ffffffffffffffffff',
-        createdAt: new Date('2015-02-23T23:00:00'),
-        author: 'Kozlovski Vlad',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: [ 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '7',
-        description: 'asdasffaf',
-        createdAt: new Date('2016-02-23T23:00:00'),
-        author: 'Kovchugo Ksu',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '8',
-        description: 'ggggggggggggggggggggg',
-        createdAt: new Date('2012-02-23T23:00:00'),
-        author: 'Kobzev Dmitry',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '9',
-        description: 'hhhhhhhhhhhhhhhhhhhhhhhh',
-        createdAt: new Date('2013-02-23T23:00:00'),
-        author: 'Kukel Jenya',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-         likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '10',
-        description: 'yyyyyyyyyyyyyyyyyyyyyyyyyy',
-        createdAt: new Date('2016-02-23T23:00:00'),
-        author: 'Kunc Ecaterina',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '11',
-        description: 'tttttttttttttttttttttttttttt',
-        createdAt: new Date('2010-02-23T23:00:00'),
-        author: 'Lazaruonock Nickita',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '12',
-        description: 'wwwwwwwwwwwwwwwwwwwwwwwwwww',
-        createdAt: new Date('2000-02-23T23:00:00'),
-        author: 'Malina Vlad',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: [ 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '13',
-        description: 'rrrrrrrrrrrrrrrrrrrrrrrrrrr',
-        createdAt: new Date('2001-02-23T23:00:00'),
-        author: 'Rudevich Arina',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '14',
-        description: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-        createdAt: new Date('2002-02-23T23:00:00'),
-        author: 'ROmashevsky Pavel',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '15',
-        description: 'uuuuuuuuuuuuuuuuuuu',
-        createdAt: new Date('2018-02-23T23:00:00'),
-        author: 'Sidirova Yana',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: [ 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-       id: '16',
-        description: 'aaaaaaaaaaaaaaaaa',
-        createdAt: new Date('2017-02-23T23:00:00'),
-        author: 'Artem Germanenko',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '17',
-        description: 'lllllllllllllllllllllllllllllllll',
-        createdAt: new Date('2000-02-23T23:00:00'),
-        author: 'Manzhulina Elizaveta',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '18',
-        description: 'ooooooooooooooooooooooooooooooooo',
-        createdAt: new Date('2009-02-23T23:00:00'),
-        author: 'Serenckov Boris',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-    {
-        id: '19',
-        description: 'ppppppppppppppppppppppppppppppppppp',
-        createdAt: new Date('2008-02-23T23:00:00'),
-        author: 'Myxarski alex',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashTags: ['#NiceWorld', '#HelloWorld'],
-        likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-    },
-];
-
-
-var photoPosttoAdd = {
-    id: '20',
-    description: 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz',
-    createdAt: new Date('2007-02-23T23:00:00'),
-    author: 'Shpuntov Ivan',
-    photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-    hashTags: ['#NiceWorld', '#HelloWorld'],
-    likes: ['Artem Germanenko', 'Ksu Karabanova', 'Simon Karasik']
-}
-
+//WORK WITH POSTS TASK4
 
 let main_module = (function() {
     function compare(PostOne, PostTwo) {
@@ -203,21 +19,21 @@ let main_module = (function() {
 
             if (filterConfig) {
                 let photoPostsToRemake = photoPosts;
-                if (filterConfig.author)
+                if (filterConfig.author && filterConfig.author !== '') {
                     photoPostsToRemake = photoPostsToRemake.filter(post => post.author === filterConfig.author);
-                if (filterConfig.hashtags) {
-                    photoFilterResult = photoFilterResult.filter(post => {
+                }
+
+                if (filterConfig.hashTags && filterConfig.hashTags.toString() !== '') {
+                    photoPostsToRemake = photoPostsToRemake.filter(post => {
                         return filterConfig.hashTags.every((tag) => {
                             return post.hashTags.includes(tag);
                         });
                     });
                 }
 
-                if (filterConfig.createdAt) {
-                    photoPostsToRemake = photoPostsToRemake.filter(post =>
-                        post.createdAt.getFullYear() === filterConfig.createdAt.getFullYear() &&
-                        post.createdAt.getMonth() === filterConfig.createdAt.getMonth() &&
-                        post.createdAt.getDate() === filterConfig.createdAt.getDate());
+                if (filterConfig.createdAt && filterConfig.createdAt.toString() !== 'Invalid Date') {
+                    filterConfig.createdAt = new Date(filterConfig.createdAt);
+                    photoPostsToRemake = photoPostsToRemake.filter(post => new Date(post.createdAt) <= new Date(filterConfig.createdAt));
                 }
 
                 return photoPostsToRemake.slice(skip, skip + top);
@@ -254,7 +70,7 @@ let main_module = (function() {
             if (photoPost.photoLink.length === 0) {
                 return false;
             }
-            if (!(photoPost.createdAt instanceof Date)) {
+            if (!(photoPost.createdAt.toString() !== 'Invalid Date')) {
                 return false;
             }
             if (!(photoPost.hashTags instanceof Array)) {
@@ -277,23 +93,23 @@ let main_module = (function() {
 
         editPhotoPost: function(ID, photoPost) {
             let index = photoPosts.findIndex(post => post.id === ID);
+            if (index === -1) {
+                return false;
+            }
             if (!this.validatePhotoPost(photoPosts[index])) {
                 return false;
             }
-            if (photoPost.author || photoPost.id || photoPost.createdAt || index === -1) {
+            if (photoPost.author || photoPost.id || photoPost.createdAt) {
                 return false;
             }
-            if (photoPost.description) {
+            if (photoPost.description && photoPost.description !== '') {
                 photoPosts[index].description = photoPost.description;
             }
-            if (photoPost.photoLink) {
+            if (photoPost.photoLink && photoPost.photoLink !== '') {
                 photoPosts[index].photoLink = photoPost.photoLink;
             }
-            if (photoPost.hashTags) {
+            if (photoPost.hashTags && photoPost.hashTags.toString() !== '') {
                 photoPosts[index].hashTags = photoPost.hashTags;
-            }
-            if (photoPost.likes) {
-                photoPosts[index].likes = photoPost.likes;
             }
             return true;
         },
@@ -304,33 +120,6 @@ let main_module = (function() {
                 return true;
             }
             return false;
-        }
+        },
     }
 })();
-
-/*console.log('All posts:');
-console.log(photoPosts);
-console.log('Check getPhotoPosts');
-console.log(main_module.getPhotoPosts(0, 10));
-console.log(main_module.getPhotoPosts(10, 10));
-console.log(main_module.getPhotoPosts(0, 10, {author: 'Artem Germanenko'}));
-console.log(main_module.getPhotoPosts(0, 10, { hashTags: ['#NiceWorld', '#HelloWorld']}));
-console.log(main_module.getPhotoPosts(0, 10, {author: 'Artem Germanenko', hashTags: ['#NiceWorld', '#HelloWorld']}));
-console.log('Check getPhotoPost');
-console.log(main_module.getPhotoPost('1'));
-console.log(main_module.getPhotoPost('100'));
-console.log('Check validatePhotoPost');
-console.log(main_module.validatePhotoPost(main_module.getPhotoPost('1')));
-console.log(main_module.validatePhotoPost(main_module.getPhotoPost('7')));
-console.log('Check addPhotoPost');
-console.log(main_module.addPhotoPost(photoPosttoAdd));
-console.log(photoPosts);
-console.log(main_module.addPhotoPost({description: 'bad args'}));
-console.log('Check editPhotoPost');
-console.log(main_module.editPhotoPost('1', {description: "hi my hero superman", likes: ['nobody']}));
-console.log(main_module.editPhotoPost('1', {  author: 'bad args'}));
-console.log(photoPosts);
-console.log('Check removePhotoPost');
-console.log(main_module.removePhotoPost('10'));
-console.log(main_module.removePhotoPost('100'));
-console.log(photoPosts);*/
