@@ -34,6 +34,6 @@ let autoSave = (function() {
 
 ///////////////////////////////////////////////////////////////////////
 // IF IT IS U FIRST LOAD UNCOMMENT THIS TO LOAD POSTS FROM JSON FILE //
-//             localStorage.setItem('posts', Posts);                 //
+//      localStorage.setItem('posts', Posts);                        //
 ///////////////////////////////////////////////////////////////////////
 let photoPosts = JSON.parse(localStorage.getItem('posts'));
