@@ -1,13 +1,10 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
+const serveStatic = require('serve-static');
 
-http.createServer(function (request, response) {
-  const url = request.url === '/' ? '/index.html' : request.url;
-  fs.readFile('public/task6' + url, function(err, data) {
-  	if(err){
-  	 response.end(err.message);
-  	} else {
-     response.end(data);
-    }
-  });
-}).listen(3030);
+const app = express();
+
+app.use(serveStatic('public/task6/'));
+
+const server = app.listen(3030, () => {
+	console.log(`Server on port ${server.address().port}`);
+});

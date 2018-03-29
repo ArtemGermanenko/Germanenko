@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ArtemGermanenko/Germanenko#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "serve-static": "^1.13.2"
   }
 }
