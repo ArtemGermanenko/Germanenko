@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "ead2d4fe-2bc2-4e19-bfa0-1eef0391d6df",
+		"name": "Task8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getPosts",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"eeeeeeeeeeeeeeeeeee\",\n    \"hashTags\": [\n        \"#HiIAMROBOTANDIWILLKILLU)))\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/edit/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"edit",
+						"3"
+					]
+				},
+				"description": "first try"
+			},
+			"response": []
+		},
+		{
+			"name": "getPost/id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"eeeeeeeeeeeeeeeeeee\",\n    \"hashTags\": [\n        \"#HiIAMROBOTANDIWILLKILLU)))\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/edit/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"edit",
+						"3"
+					]
+				},
+				"description": "first try"
+			},
+			"response": []
+		},
+		{
+			"name": "add",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"eeeeeeeeeeeeeeeeeee\",\n    \"hashTags\": [\n        \"#HiIAMROBOTANDIWILLKILLU)))\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/edit/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"edit",
+						"3"
+					]
+				},
+				"description": "first try"
+			},
+			"response": []
+		},
+		{
+			"name": "edit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"eeeeeeeeeeeeeeeeeee\",\n    \"hashTags\": [\n        \"#HiIAMROBOTANDIWILLKILLU)))\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/edit/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"edit",
+						"3"
+					]
+				},
+				"description": "first try"
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"eeeeeeeeeeeeeeeeeee\",\n    \"hashTags\": [\n        \"#HiIAMROBOTANDIWILLKILLU)))\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/edit/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"edit",
+						"3"
+					]
+				},
+				"description": "first try"
+			},
+			"response": []
+		}
+	]
+}

@@ -15,7 +15,9 @@ function getPhotoPosts() {
     return posts;
 }
 
+
 module.exports.getPhotoPosts = getPhotoPosts;
+
 
 app.get('/getPost/:id', (req, res) => {
     let posts = getPhotoPosts();
@@ -24,68 +26,84 @@ app.get('/getPost/:id', (req, res) => {
     post ? res.send(post) : res.send(404).end();
 });
 
+
 app.get('/getPosts', (req, res) => {
     let posts = getPhotoPosts();
     posts ? res.send(posts) : res.status(404).end();
 });
 
+
 app.post('/add', (req, res) => {
     let post = req.body;
     let posts = getPhotoPosts();
 
-    posts.push(post);
+    let index = posts.findIndex(function(element) {
+        return element.id.toString() === req.body.id.toString();
+    });
 
-    if (posts) {
-        fs.writeFile(way, JSON.stringify(posts));
-        res.send(posts);
+    if (index !== -1 || !posts) {
+        res.end();
+        res.statusCode = 400;
     } else {
-        res.status(404).end();
+        posts.push(post);
+        fs.writeFile(way, JSON.stringify(posts));
+        res.send(post);
+        res.end();
+        res.statusCode = 200;
     }
 });
+
 
 app.delete('/delete/:id', function(req, res) {
     let posts = getPhotoPosts();
 
     let index = posts.findIndex(function(element) {
-        return element.id === req.params.id.toString();
+        return element.id.toString() === req.params.id.toString();
     });
 
-    posts.splice(index, 1);
-
-    if (posts) {
+    if (index === -1 || !posts) {
+        res.end();
+        res.statusCode = 400;
+    } else {
+        posts.splice(index, 1);
         fs.writeFile(way, JSON.stringify(posts));
         res.send(posts);
-    } else {
-        res.status(404).end();
+        res.end();
+        res.statusCode = 200;
     }
 });
 
 app.put('/edit/:id', (req, res) => {
     let posts = getPhotoPosts();
     let post = req.body;
+
     let index = posts.findIndex(function(element) {
         return element.id === req.params.id.toString();
     });
 
-    let editedPost = Object.assign({}, posts[index]);
+    if (index === -1 || !posts) {
+        res.end();
+        res.statusCode = 400;
 
-    if (post.hasOwnProperty('description')) {
-        editedPost.description = post.description;
-    }
-    if (post.hasOwnProperty('photoLink')) {
-        editedPost.photoLink = post.photoLink;
-    }
-    if (post.hasOwnProperty('hashTags')) {
-        editedPost.hashTags = post.hashTags;
-    }
+    } else {
+        let editedPost = Object.assign({}, posts[index]);
 
-    posts[index] = editedPost;
+        if (post.hasOwnProperty('description')) {
+            editedPost.description = post.description;
+        }
+        if (post.hasOwnProperty('photoLink')) {
+            editedPost.photoLink = post.photoLink;
+        }
+        if (post.hasOwnProperty('hashTags')) {
+            editedPost.hashTags = post.hashTags;
+        }
 
-    if (posts) {
+        posts[index] = editedPost;
+
         fs.writeFile(way, JSON.stringify(posts));
         res.send(posts);
-    } else {
-        res.status(404).end();
+        res.end();
+        res.statusCode = 200;
     }
 });
 
