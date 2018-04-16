@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const way = 'public/server/data/posts.json';
 var bodyParser = require('body-parser');
-
+const change = require('./public/UI/js/script.js');
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,95 +15,79 @@ function getPhotoPosts() {
     return posts;
 }
 
-
-module.exports.getPhotoPosts = getPhotoPosts;
-
-
-app.get('/getPost/:id', (req, res) => {
+app.get('/getPost', (req, res) => {
     let posts = getPhotoPosts();
-
-    let post = posts.find((post) => req.params.id === post.id);
+    posts.getPost = change.getPhotoPost;
+    let post = posts.getPost(req.query.id.toString());
     post ? res.send(post) : res.send(404).end();
-});
+})
 
 
-app.get('/getPosts', (req, res) => {
+app.post('/getPhotoPosts', (req, res) => {
     let posts = getPhotoPosts();
-    posts ? res.send(posts) : res.status(404).end();
+    const skip = req.query.skip;
+    const top = req.query.top;
+    const filterConfig = req.body;
+    posts.getPhotoPosts = change.getPhotoPosts;
+
+    if (skip < 0 || top < 0 || filterConfig === undefined) {
+        res.statusCode = 400;
+        res.end();
+    } else {
+        new_posts = posts.getPhotoPosts(new Number(skip), new Number(top), filterConfig);
+        res.statusCode = 200;
+        res.send(JSON.stringify(new_posts));
+        res.end();
+    }
 });
 
-
-app.post('/add', (req, res) => {
+app.post('/addPhotoPost', (req, res) => {
     let post = req.body;
     let posts = getPhotoPosts();
 
-    let index = posts.findIndex(function(element) {
-        return element.id.toString() === req.body.id.toString();
-    });
+    posts.addPhotoPost = change.addPhotoPost;
 
-    if (index !== -1 || !posts) {
-        res.end();
-        res.statusCode = 400;
-    } else {
-        posts.push(post);
+    if (posts.addPhotoPost(post)) {
+        res.statusCode = 200;
         fs.writeFile(way, JSON.stringify(posts));
         res.send(post);
         res.end();
-        res.statusCode = 200;
+    } else {
+        res.statusCode = 400;
+        res.end();
     }
 });
 
-
-app.delete('/delete/:id', function(req, res) {
+app.delete('/removePhotoPost', function(req, res) {
     let posts = getPhotoPosts();
 
-    let index = posts.findIndex(function(element) {
-        return element.id.toString() === req.params.id.toString();
-    });
+    posts.removePhotoPost = change.removePhotoPost;
 
-    if (index === -1 || !posts) {
-        res.end();
-        res.statusCode = 400;
-    } else {
-        posts.splice(index, 1);
+    if (posts.removePhotoPost(req.query.id.toString())) {
         fs.writeFile(way, JSON.stringify(posts));
         res.send(posts);
         res.end();
         res.statusCode = 200;
+    } else {
+        res.statusCode = 400;
+        res.end();
     }
 });
 
-app.put('/edit/:id', (req, res) => {
+app.put('/editPhotoPost', (req, res) => {
     let posts = getPhotoPosts();
     let post = req.body;
 
-    let index = posts.findIndex(function(element) {
-        return element.id === req.params.id.toString();
-    });
+    posts.editPhotoPost = change.editPhotoPost;
 
-    if (index === -1 || !posts) {
-        res.end();
-        res.statusCode = 400;
-
-    } else {
-        let editedPost = Object.assign({}, posts[index]);
-
-        if (post.hasOwnProperty('description')) {
-            editedPost.description = post.description;
-        }
-        if (post.hasOwnProperty('photoLink')) {
-            editedPost.photoLink = post.photoLink;
-        }
-        if (post.hasOwnProperty('hashTags')) {
-            editedPost.hashTags = post.hashTags;
-        }
-
-        posts[index] = editedPost;
-
+    if (posts.editPhotoPost(req.query.id, post)) {
+        res.statusCode = 200;
         fs.writeFile(way, JSON.stringify(posts));
         res.send(posts);
         res.end();
-        res.statusCode = 200;
+    } else {
+        res.statusCode = 400;
+        res.end();
     }
 });
 

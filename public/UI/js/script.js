@@ -1,24 +1,20 @@
 //WORK WITH POSTS TASK4
-
 let main_module = (function() {
     function compare(PostOne, PostTwo) {
         return Date.parse(PostTwo.createdAt) - Date.parse(PostOne.createdAt);
     }
-
-    photoPosts = photoPosts.sort(compare);
-
     return {
         getPhotoPosts: function(skip, top, filterConfig) {
-            if (typeof skip !== 'number') {
+            if (!skip) {
                 skip = 0;
             }
 
-            if (typeof top !== 'number') {
+            if (!top) {
                 top = 10;
             }
 
             if (filterConfig) {
-                let photoPostsToRemake = photoPosts;
+                let photoPostsToRemake = this;
                 if (filterConfig.author && filterConfig.author !== '') {
                     photoPostsToRemake = photoPostsToRemake.filter(post => post.author === filterConfig.author);
                 }
@@ -38,11 +34,11 @@ let main_module = (function() {
 
                 return photoPostsToRemake.slice(skip, skip + top);
             }
-            return photoPosts.slice(skip, skip + top);
+            return this.slice(skip, skip + top);
         },
 
         getPhotoPost: function(ID) {
-            return photoPosts.find(posts => posts.id === ID);
+            return this.find(posts => posts.id === ID);
         },
 
         validatePhotoPost: function(photoPost) {
@@ -83,43 +79,45 @@ let main_module = (function() {
         },
 
         addPhotoPost: function(photoPost) {
-            if (!this.validatePhotoPost(photoPost) || photoPosts.findIndex(index => index.id === photoPost.id) !== -1) {
+            if (!main_module.validatePhotoPost(photoPost) || this.findIndex(index => index.id === photoPost.id) !== -1) {
                 return false;
             }
-            photoPosts.push(photoPost);
-            photoPosts.sort(compare);
+            this.push(photoPost);
+            this.sort(compare);
             return true;
         },
 
         editPhotoPost: function(ID, photoPost) {
-            let index = photoPosts.findIndex(post => post.id === ID);
+            let index = this.findIndex(post => post.id === ID);
             if (index === -1) {
                 return false;
             }
-            if (!this.validatePhotoPost(photoPosts[index])) {
+            if (!main_module.validatePhotoPost(this[index])) {
                 return false;
             }
             if (photoPost.author || photoPost.id || photoPost.createdAt) {
                 return false;
             }
             if (photoPost.description && photoPost.description !== '') {
-                photoPosts[index].description = photoPost.description;
+                this[index].description = photoPost.description;
             }
             if (photoPost.photoLink && photoPost.photoLink !== '') {
-                photoPosts[index].photoLink = photoPost.photoLink;
+                this[index].photoLink = photoPost.photoLink;
             }
             if (photoPost.hashTags && photoPost.hashTags.toString() !== '') {
-                photoPosts[index].hashTags = photoPost.hashTags;
+                this[index].hashTags = photoPost.hashTags;
             }
             return true;
         },
 
         removePhotoPost: function(ID) {
-            if (photoPosts.findIndex(post => post.id == ID) !== -1) {
-                photoPosts.splice(photoPosts.findIndex(post => post.id == ID), 1);
+            if (this.findIndex(post => post.id == ID) !== -1) {
+                this.splice(this.findIndex(post => post.id == ID), 1);
                 return true;
             }
             return false;
         },
     }
 })();
+
+module.exports = main_module;
