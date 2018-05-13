@@ -1,51 +1,47 @@
-let Indexation = (function() {
+const Indexation = (function () {
+  let index = 9;
+  let size = 0;
 
-    let index = 9;
-    let size = 0;
+  return {
+    getIndex() {
+      return index;
+    },
 
-    return {
-        getIndex: function() {
-            return index;
-        },
+    addIndex(value) {
+      if (typeof value !== 'number') {
+        return false;
+      }
+      index += value;
+      return true;
+    },
 
-        addIndex: function(value) {
-            if (typeof value !== 'number') {
-                return false;
-            } else {
-                index += value;
-                return true;
-            }
-        },
+    zeroIndex() {
+      index = 0;
+    },
 
-        zeroIndex: function() {
-            index = 0;
-        },
+    getSize() {
+      return size;
+    },
 
-        getSize: function() {
-            return size;
-        },
+    addSize() {
+      if (typeof value !== 'number') {
+        return false;
+      }
+      size++;
+      return true;
+    },
 
-        addSize: function() {
-            if (typeof value !== 'number') {
-                return false;
-            } else {
-                size++;
-                return true;
-            }
-        },
-
-        subSize: function() {
-            if (typeof value !== 'number') {
-                return false;
-            } else {
-                size--;
-                return true;
-            }
-        },
-    }
-})();
+    subSize() {
+      if (typeof value !== 'number') {
+        return false;
+      }
+      size--;
+      return true;
+    },
+  };
+}());
 
 
 export {
-    Indexation
+  Indexation,
 };

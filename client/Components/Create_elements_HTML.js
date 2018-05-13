@@ -1,31 +1,31 @@
 import Controller from '../Controller/Controller';
 import {
-    _username
+  _username,
 } from '../Controller/Controller';
 
-let Create = (function() {
-    return {
-        photoPost: function(post) {
-            const data = new Date(post.createdAt);
-            const postHTML = `<div class="top_margin">${post.author}
+const Create = (function () {
+  return {
+    photoPost(post) {
+      const data = new Date(post.createdAt);
+      const postHTML = `<div class="top_margin">${post.author}
                <i class="date">${data.getHours()}:${data.getMinutes()} / ${data.getDate()}.${data.getMonth() + 1}.${data.getFullYear()}</i>
                </div>
                <img src="${post.photoLink}" class="photo">
                <div class="bottom_margin">
-               ${ document.getElementsByClassName('username')[0].textContent === "Guest" ?  `` :
-               `${post.likes.find(like => like === _username) ?  `<i class="likered material-icons md-48" id="likered:${post.id}">favorite_border</i>` :
-               `<i class="like material-icons md-48" id="like:${post.id}">favorite_border</i>`}`}
+               ${document.getElementsByClassName('username')[0].textContent === 'Guest' ? '' :
+    `${post.likes.find(like => like === _username) ? `<i class="likered material-icons md-48" id="like:${post.id}">favorite_border</i>` :
+      `<i class="like material-icons md-48" id="like:${post.id}">favorite_border</i>`}`}
                <p class="hashtags">${post.hashTags}</p>
-               ${_username === post.author ? `<i class="edit material-icons md-48" id="editPost:${post.id}">create</i>` : ``}
+               ${_username === post.author ? `<i class="edit material-icons md-48" id="editPost:${post.id}">create</i>` : ''}
                </div>
                <p class="comments">${post.description}</p>`;
-            return postHTML;
-        },
+      return postHTML;
+    },
 
-        login: function() {
-            let login = document.createElement('div');
-            login.setAttribute('id', 'login-form');
-            login.innerHTML = `
+    login() {
+      const login = document.createElement('div');
+      login.setAttribute('id', 'login-form');
+      login.innerHTML = `
             <h1>Authorization</h1>
             <fieldset>
             <form action="javascript:void(0);" method="get">
@@ -34,84 +34,84 @@ let Create = (function() {
             <input type="submit" value="Enter" id="btn_login_login">
             </form>
             </fieldset>`;
-            return login;
-        },
+      return login;
+    },
 
-        addEventEnter: function() {
-            let enter = document.getElementById('btn_login_login');
-            enter.addEventListener('click', Controller.clickButtonLoginLogin);
-        },
+    addEventEnter() {
+      const enter = document.getElementById('btn_login_login');
+      enter.addEventListener('click', Controller.clickButtonLoginLogin);
+    },
 
-        divPosts: function() {
-            let divPost = document.createElement('div');
-            divPost.setAttribute('id', 'posts');
-            divPost.innerHTML = '<div class="my-flex-container"></div>';
-            return divPost;
-        },
+    divPosts() {
+      const divPost = document.createElement('div');
+      divPost.setAttribute('id', 'posts');
+      divPost.innerHTML = '<div class="my-flex-container"></div>';
+      return divPost;
+    },
 
-        filters: function() {
-            let filterHTML = document.createElement('div');
-            filterHTML.classList.add('filter');
-            filterHTML.innerHTML = `
+    filters() {
+      const filterHTML = document.createElement('div');
+      filterHTML.classList.add('filter');
+      filterHTML.innerHTML = `
             <p class="filter_text">Filters:</p>
             <input type="text" class="input_name" placeholder="Username">
             <input type="text" class="input_name" placeholder="#Hashtag,#Hashtag">
             <input type="text" class="input_name" placeholder="Date: dd.mm.yyyy">
             <button class="input_name btn_filter" id='filt'>FILT</button>`;
-            return filterHTML;
-        },
+      return filterHTML;
+    },
 
-        buttonLoad: function() {
-            const loadButton = document.createElement('button');
-            loadButton.classList.add('load_more');
-            loadButton.textContent = 'Load more';
-            return loadButton;
-        },
+    buttonLoad() {
+      const loadButton = document.createElement('button');
+      loadButton.classList.add('load_more');
+      loadButton.textContent = 'Load more';
+      return loadButton;
+    },
 
-        buttonLogin: function() {
-            let buttonLogin = document.createElement('button');
-            buttonLogin.classList.add('add');
-            buttonLogin.classList.add('material-icons');
-            buttonLogin.classList.add('md-48');
-            buttonLogin.textContent = 'add';
-            buttonLogin.style.float = 'right';
-            buttonLogin.addEventListener('click', Controller.clickButtonLoginMain);
-            return buttonLogin;
-        },
+    buttonLogin() {
+      const buttonLogin = document.createElement('button');
+      buttonLogin.classList.add('add');
+      buttonLogin.classList.add('material-icons');
+      buttonLogin.classList.add('md-48');
+      buttonLogin.textContent = 'add';
+      buttonLogin.style.float = 'right';
+      buttonLogin.addEventListener('click', Controller.clickButtonLoginMain);
+      return buttonLogin;
+    },
 
-        buttonAdd: function() {
-            let buttonAdd = document.createElement('button');
-            buttonAdd.classList.add('add');
-            buttonAdd.classList.add('material-icons');
-            buttonAdd.classList.add('md-48');
-            buttonAdd.textContent = 'add';
-            buttonAdd.style.float = 'left';
-            return buttonAdd;
-        },
+    buttonAdd() {
+      const buttonAdd = document.createElement('button');
+      buttonAdd.classList.add('add');
+      buttonAdd.classList.add('material-icons');
+      buttonAdd.classList.add('md-48');
+      buttonAdd.textContent = 'add';
+      buttonAdd.style.float = 'left';
+      return buttonAdd;
+    },
 
-        buttonExit: function() {
-            let buttonExit = document.createElement('button');
-            buttonExit.classList.add('exit');
-            buttonExit.classList.add('material-icons');
-            buttonExit.classList.add('md-48');
-            buttonExit.textContent = 'close';
-            buttonExit.addEventListener('click', Controller.clickButtonExit);
-            return buttonExit;
-        },
+    buttonExit() {
+      const buttonExit = document.createElement('button');
+      buttonExit.classList.add('exit');
+      buttonExit.classList.add('material-icons');
+      buttonExit.classList.add('md-48');
+      buttonExit.textContent = 'close';
+      buttonExit.addEventListener('click', Controller.clickButtonExit);
+      return buttonExit;
+    },
 
-        add: function() {
-            const addHTML = `<div id='posts'>
+    add() {
+      const addHTML = `<div id='posts'>
             <div class="my-flex-container">
             <div class="my-flex-block shadow add-p">
             <div class="top_margin">
             ${_username}
-            <i class="date">${new Date()}</i>
+            <i class="date">dd.mm.yyyy</i>
             </div>
-            <img src="http://s1v1.irc.lv/files/1/0/0/98/Gx7wsyKV.jpeg" class="photo">
+            <img src="https://i.stack.imgur.com/NdSwT.png" class="photo">
             <div class="bottom_margin">
-            <p class="hashtags"></p>
+            <p class="hashtags">#Example</p>
             </div>
-            <p class="comments"></p>
+            <p class="comments">Example</p>
             </div>
             </div>
             </div>
@@ -122,30 +122,29 @@ let Create = (function() {
             <input type="file" class="fileInput input_name" accept="image/*">
             <button class="input_name btn_filter" id="enterAdd">Enter</button>
             </div>`;
-            return addHTML;
-        },
+      return addHTML;
+    },
 
-        buttonReady: function() {
-            let buttonReady = document.createElement('button');
-            buttonReady.classList.add('input_name');
-            buttonReady.classList.add('btn_filter');
-            buttonReady.classList.add('ready');
-            buttonReady.textContent = 'Ready';
-            return buttonReady;
-        },
+    buttonReady() {
+      const buttonReady = document.createElement('button');
+      buttonReady.classList.add('input_name');
+      buttonReady.classList.add('btn_filter');
+      buttonReady.classList.add('ready');
+      buttonReady.textContent = 'Ready';
+      return buttonReady;
+    },
 
-        editors: function(id) {
-            let edit = document.createElement('div');
-            edit.classList.add('editor');
-            edit.innerHTML = `<p class="filter_text">Edit:</p>
+    editors(id) {
+      const edit = document.createElement('div');
+      edit.classList.add('editor');
+      edit.innerHTML = `<p class="filter_text">Edit:</p>
             <input type="text" class="input_name" placeholder="Description">
             <input type="text" class="input_name" placeholder="#Hastag,,#Hashtag">
-            <input type="text" class="input_name" placeholder="URL of new Photo">
             <button class="input_name btn_filter">Ready</button>
             <button class="input_name btn_filter">Remove</button>`;
-            return edit;
-        },
-    }
-})();
+      return edit;
+    },
+  };
+}());
 
 export default Create;
