@@ -11,11 +11,12 @@ const ServerController = (function () {
       if (!top) {
         top = 10;
       }
+
       if (filterConfig) {
         let photoPostsToRemake = this;
         if (filterConfig.author && filterConfig.author !== '') {
           photoPostsToRemake = photoPostsToRemake.filter(post =>
-            post.author === filterConfig.author);
+            post.author.toString() === filterConfig.author.toString());
         }
 
         if (filterConfig.hashTags && filterConfig.hashTags.toString() !== '') {
@@ -23,13 +24,11 @@ const ServerController = (function () {
           	filterConfig.hashTags.every(tag => post.hashTags.includes(tag)));
         }
 
-        if (filterConfig.createdAt && filterConfig.createdAt.toString() !== 'Invalid Date') {
-          filterConfig.createdAt = new Date(filterConfig.createdAt);
+        if (filterConfig.createdAt && filterConfig.createdAt.toString() !== 'Invalid Date' && filterConfig.createdAt !== null) {
           photoPostsToRemake = photoPostsToRemake.filter(post =>
             new Date(post.createdAt) <= new Date(filterConfig.createdAt));
         }
-
-        return photoPostsToRemake.slice(skip, skip + top);
+        return photoPostsToRemake;
       }
       return this.slice(skip, skip + top);
     },

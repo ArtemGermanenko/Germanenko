@@ -173,7 +173,7 @@ const Controller = (function () {
       if (postsAfterFilter.length === 0) {
         View.createMessageFilter();
       } else {
-        View.succsessExecute();
+        View.afterRemove();
         View.showPosts(postsAfterFilter);
         View.removeLoad();
       }
@@ -229,6 +229,9 @@ const Controller = (function () {
       imgId = idImg;
     },
 
+    mainPageAfterFilt() {
+      View.mainPage(_username);
+    },
   };
 }());
 

@@ -188,7 +188,7 @@ const View = (function () {
       const button = document.createElement('button');
       button.classList.add('btn_error');
       button.textContent = 'Return';
-      button.addEventListener('click', Controller.Main_Page);
+      button.addEventListener('click', Controller.mainPageAfterFilt);
 
       while (main.lastChild) {
         main.lastChild.remove();

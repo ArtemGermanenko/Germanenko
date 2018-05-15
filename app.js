@@ -80,9 +80,9 @@ app.post('/getPhotoPosts', (req, res) => {
   const top = req.query.top;
   const filterConfig = req.body;
   posts.getPhotoPosts = controller.getPhotoPosts;
-  const new_posts = posts.getPhotoPosts(new Number(skip), new Number(top), filterConfig);
+  const newPosts = posts.getPhotoPosts(new Number(skip), new Number(top), filterConfig);
   res.statusCode = 200;
-  res.send(new_posts);
+  res.send(newPosts);
   res.end();
 });
 
