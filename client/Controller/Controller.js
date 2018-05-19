@@ -64,7 +64,7 @@ const Controller = (function () {
 
     succsessExecute() {
       View.afterRemove();
-      Controller.displayPosts(0, Indexation.getIndex(), undefined);
+      Controller.displayPosts(0, Indexation.getIndex(), ['', '', '']);
     },
 
     clickButtonLoginLogin() {
@@ -85,12 +85,12 @@ const Controller = (function () {
     clickButtonExit() {
       View.afterButtonExit();
       _username = null;
-      Controller.displayPosts(0, 9, undefined);
+      Controller.displayPosts(0, 9, ['', '', '']);
     },
 
     clickButtonLoad() {
       const index = Indexation.getIndex();
-      Controller.displayPosts(index, 9, undefined);
+      Controller.displayPosts(index, 9, ['', '', '']);
       if (index + 9 >= Indexation.getSize()) {
         View.removeLoad();
       } else {
@@ -140,7 +140,8 @@ const Controller = (function () {
         View.removeFilterEdit();
         Model.removePhotoPost(id)
           .then(
-            response => Controller.succsessExecute(),
+            response => (Controller.succsessExecute(),
+              View.addButtonLoad()),
             (error) => { /* error page */ },
           );
       };
@@ -151,7 +152,8 @@ const Controller = (function () {
         const post = View.getInputsEdit();
         Model.editPhotoPost(id, post)
           .then(
-            response => Controller.succsessExecute(),
+            response => (Controller.succsessExecute(),
+              View.addButtonLoad()),
             (error) => { /* error page */ },
           );
         View.removeFilterEdit();

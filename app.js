@@ -2,10 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const busboy = require('connect-busboy');
 const bodyParser = require('body-parser');
-const controller = require('./server/Controller');
-const multer = require('multer');
 
-const upload = multer();
+const controller = require('./server/Controller');
 
 const pathPosts = 'server/data/posts.json';
 const pathUsers = 'server/data/users.json';
@@ -69,6 +67,11 @@ app.get('/getUser', (req, res) => {
 app.get('/getPost', (req, res) => {
   const posts = getPhotoPosts();
   posts.getPost = controller.getPhotoPost;
+
+  if (!req.query.id) {
+    res.send(404).end();
+  }
+
   const post = posts.getPost(req.query.id.toString());
   post ? res.send(post) : res.send(404).end();
 });
@@ -83,7 +86,6 @@ app.post('/getPhotoPosts', (req, res) => {
   const newPosts = posts.getPhotoPosts(new Number(skip), new Number(top), filterConfig);
   res.statusCode = 200;
   res.send(newPosts);
-  res.end();
 });
 
 app.post('/addPhotoPost', (req, res) => {
@@ -136,7 +138,6 @@ app.put('/editPhotoPost', (req, res) => {
       / * ошибка обработки * /;
     });
     res.send(posts);
-    res.end();
   } else {
     res.statusCode = 404;
     res.end();

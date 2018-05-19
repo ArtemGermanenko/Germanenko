@@ -1,7 +1,5 @@
 import Controller from '../Controller/Controller';
-import {
-  _username,
-} from '../Controller/Controller';
+import { _username } from '../Controller/Controller';
 
 const Create = (function () {
   return {

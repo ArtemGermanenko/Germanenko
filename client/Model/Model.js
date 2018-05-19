@@ -5,7 +5,7 @@ const Model = (function () {
     getPhotoPost(id) {
       return new Promise(((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/getPost?id=${id}`, true);
+        xhr.open('GET', `/getPost?id=${id}`);
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.onreadystatechange = function () {
           if (xhr.readyState !== 4) {
@@ -26,7 +26,7 @@ const Model = (function () {
     getPhotoPosts(skip, top, filterConfig) {
       return new Promise(((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', `/getPhotoPosts?skip=${skip}&top=${top}`, true);
+        xhr.open('POST', `/getPhotoPosts?skip=${skip}&top=${top}`);
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.onreadystatechange = function () {
           if (xhr.readyState !== 4) {
@@ -47,7 +47,7 @@ const Model = (function () {
     addPhotoPost(post) {
       return new Promise(((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/addPhotoPost', true);
+        xhr.open('POST', '/addPhotoPost');
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.onreadystatechange = function () {
           if (xhr.readyState !== 4) {
@@ -68,7 +68,7 @@ const Model = (function () {
     removePhotoPost(id) {
       return new Promise(((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('DELETE', `/removePhotoPost?id=${id}`, true);
+        xhr.open('DELETE', `/removePhotoPost?id=${id}`);
         xhr.onreadystatechange = function () {
           if (xhr.readyState !== 4) {
             return;
@@ -88,7 +88,7 @@ const Model = (function () {
     editPhotoPost(id, newPost) {
       return new Promise(((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('PUT', `/editPhotoPost?id=${id}`, true);
+        xhr.open('PUT', `/editPhotoPost?id=${id}`);
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.onreadystatechange = function () {
           if (xhr.readyState !== 4) {
@@ -109,7 +109,7 @@ const Model = (function () {
     isUser(LogIn, Password) {
       return new Promise(((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/GetUser?LogIn=${LogIn}&Password=${Password}`, true);
+        xhr.open('GET', `/GetUser?LogIn=${LogIn}&Password=${Password}`);
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.onreadystatechange = function () {
           if (xhr.readyState !== 4) {

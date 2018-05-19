@@ -12,7 +12,7 @@ const View = (function () {
       section.style.width = '75%';
       section.insertBefore(Create.divPosts(), document.getElementsByClassName('load_more')[0]);
 
-      Controller.displayPosts(0, 9, undefined);
+      Controller.displayPosts(0, 9, ['', '', '']);
 
       document.getElementById('main').appendChild(Create.filters());
       document.getElementById('main').appendChild(Create.buttonLoad());
@@ -22,6 +22,11 @@ const View = (function () {
       document.getElementsByClassName('load_more')[0].addEventListener('click', Controller.clickButtonLoad);
 
       View.eventFilt();
+    },
+
+    addButtonLoad() {
+      document.getElementById('main').appendChild(Create.buttonLoad());
+      document.getElementsByClassName('load_more')[0].addEventListener('click', Controller.clickButtonLoad);
     },
 
     makeRed() {

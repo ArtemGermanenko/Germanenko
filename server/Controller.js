@@ -11,24 +11,24 @@ const ServerController = (function () {
       if (!top) {
         top = 10;
       }
-
-      if (filterConfig) {
-        let photoPostsToRemake = this;
+      if (filterConfig[0] !== '' || filterConfig[1] !== '' || filterConfig[2] !== '') {
+        let posts = this;
         if (filterConfig.author && filterConfig.author !== '') {
-          photoPostsToRemake = photoPostsToRemake.filter(post =>
+          posts = posts.filter(post =>
             post.author.toString() === filterConfig.author.toString());
         }
 
         if (filterConfig.hashTags && filterConfig.hashTags.toString() !== '') {
-          photoPostsToRemake = photoPostsToRemake.filter(post =>
-          	filterConfig.hashTags.every(tag => post.hashTags.includes(tag)));
+          posts = posts.filter(post =>
+            filterConfig.hashTags.every(tag =>
+              post.hashTags.includes(tag)));
         }
 
         if (filterConfig.createdAt && filterConfig.createdAt.toString() !== 'Invalid Date' && filterConfig.createdAt !== null) {
-          photoPostsToRemake = photoPostsToRemake.filter(post =>
+          posts = posts.filter(post =>
             new Date(post.createdAt) <= new Date(filterConfig.createdAt));
         }
-        return photoPostsToRemake;
+        return posts;
       }
       return this.slice(skip, skip + top);
     },
@@ -76,7 +76,7 @@ const ServerController = (function () {
 
     addPhotoPost(photoPost) {
       if (!ServerController.validatePhotoPost(photoPost) ||
-      	this.findIndex(index => index.id === photoPost.id) !== -1) {
+       this.findIndex(index => index.id === photoPost.id) !== -1) {
         return false;
       }
       this.push(photoPost);
