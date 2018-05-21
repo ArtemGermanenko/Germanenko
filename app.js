@@ -31,6 +31,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.put('/logout', (req, res) => {
+  if(!req.isAuthenticated()){
+    res.statusCode = 404;
+    res.end();
+  }
+
   req.session.destroy();
   res.statusCode = 200;
   res.send();
@@ -53,6 +58,11 @@ function deletePhoto(photoPath) {
 }
 
 app.post('/fileupload', (req, res) => {
+  if(!req.isAuthenticated()){
+    res.statusCode = 404;
+    res.end();
+  }
+
   let fstream;
   req.pipe(req.busboy);
   let fileFormat;
@@ -90,6 +100,11 @@ app.post('/getPhotoPosts', (req, res) => {
 });
 
 app.post('/addPhotoPost', (req, res) => {
+  if(!req.isAuthenticated()){
+    res.statusCode = 404;
+    res.end();
+  }
+
   const post = req.body;
   const posts = getPhotoPosts();
 
@@ -107,12 +122,13 @@ app.post('/addPhotoPost', (req, res) => {
 });
 
 app.delete('/removePhotoPost', (req, res) => {
+  if(!req.isAuthenticated()){
+    res.statusCode = 404;
+    res.end();
+  }
   const posts = getPhotoPosts();
-
   posts.removePhotoPost = controller.removePhotoPost;
   posts.getPhotoPost = controller.getPhotoPost;
-
-
   const postToDelete = posts.getPhotoPost(req.query.id.toString());
   if (posts.removePhotoPost(req.query.id.toString())) {
     deletePhoto(postToDelete.photoLink);
@@ -128,6 +144,11 @@ app.delete('/removePhotoPost', (req, res) => {
 });
 
 app.put('/editPhotoPost', (req, res) => {
+  if(!req.isAuthenticated()){
+    res.statusCode = 404;
+    res.end();
+  }
+
   const posts = getPhotoPosts();
   const post = req.body;
 
