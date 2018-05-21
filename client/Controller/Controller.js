@@ -86,6 +86,8 @@ const Controller = (function () {
       View.afterButtonExit();
       _username = null;
       Controller.displayPosts(0, 9, ['', '', '']);
+      Model.logOut()
+        .then((error) => { /* error page */ });
     },
 
     clickButtonLoad() {

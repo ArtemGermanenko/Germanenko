@@ -2,11 +2,14 @@ const express = require('express');
 const fs = require('fs');
 const busboy = require('connect-busboy');
 const bodyParser = require('body-parser');
-
+const session = require('express-session');
 const controller = require('./server/Controller');
+const cookieParser = require('cookie-parser');
 
 const pathPosts = 'server/data/posts.json';
 const pathUsers = 'server/data/users.json';
+const passport = require('./server/authentication/index');
+
 const pathImages = '/server/data/img/';
 const path = '/data/img/';
 
@@ -15,6 +18,27 @@ app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/client/`));
 app.use(express.static(`${__dirname}/server/`));
 app.use(busboy());
+app.use(cookieParser());
+
+app.use(session({
+  secret: 'superpupermegagigaultrasecret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false },
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.put('/logout', (req, res) => {
+  req.session.destroy();
+  res.statusCode = 200;
+  res.send();
+});
+
+app.post('/login', passport.authenticate('local'), (req, res) => {
+  res.send(req.user.username);
+});
 
 function getPhotoPosts() {
   const posts = fs.readFileSync(pathPosts);
@@ -22,11 +46,6 @@ function getPhotoPosts() {
     return JSON.parse(posts.toString());
   }
   return [];
-}
-
-function getUsers() {
-  const users = fs.readFileSync(pathUsers);
-  return JSON.parse(users.toString());
 }
 
 function deletePhoto(photoPath) {
@@ -49,33 +68,15 @@ app.post('/fileupload', (req, res) => {
   });
 });
 
-app.get('/getUser', (req, res) => {
-  const users = getUsers();
-  const LogIn = req.query.LogIn;
-  const Password = req.query.Password;
-  users.getUser = controller.getUser;
-
-  if (users.getUser(LogIn, Password)) {
-    res.statusCode = 200;
-    res.end();
-  } else {
-    res.statusCode = 204;
-    res.end();
-  }
-});
-
 app.get('/getPost', (req, res) => {
   const posts = getPhotoPosts();
   posts.getPost = controller.getPhotoPost;
-
   if (!req.query.id) {
     res.send(404).end();
   }
-
   const post = posts.getPost(req.query.id.toString());
   post ? res.send(post) : res.send(404).end();
 });
-
 
 app.post('/getPhotoPosts', (req, res) => {
   const posts = getPhotoPosts();

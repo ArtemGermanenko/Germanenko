@@ -109,7 +109,11 @@ const Model = (function () {
     isUser(LogIn, Password) {
       return new Promise(((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/GetUser?LogIn=${LogIn}&Password=${Password}`);
+        const body = JSON.stringify({
+          username: LogIn,
+          password: Password,
+        });
+        xhr.open('POST', '/login');
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.onreadystatechange = function () {
           if (xhr.readyState !== 4) {
@@ -119,6 +123,22 @@ const Model = (function () {
             resolve(LogIn);
           } else {
             reject(Controller.wrongPassword());
+          }
+        };
+        xhr.send(body);
+      }));
+    },
+
+    logOut() {
+      return new Promise(((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('PUT', '/logout');
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState !== 4) {
+            return;
+          }
+          if (this.status === 200) {
+            resolve(true);
           }
         };
         xhr.send();
