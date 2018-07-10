@@ -1,3 +1,5 @@
 **API**
 ***
-     dir/fonts *GET /asdasd 
+**Request for teacher**
+    GET/requestTest?id=...
+    body is section for test
