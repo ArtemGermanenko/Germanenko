@@ -68,7 +68,7 @@ Sends:
   }
  }
  ```
- * `GET /student/task/tasks-list?id=...` - gets array of all task of certain student. 
+ * `GET /student/task/tasks-list?id=...` - gets array of all tasks of certain student. 
 
  Receives in query:
 
@@ -99,6 +99,6 @@ Sends:
   }
  }
  ```
- Array is sorted: first comes task `without` submissions and only then `with` submissions. If student has more than one submissions for one assignment, sends only `one best` submission.
+ Array is sorted: first comes task `without` submissions and only then `with` submissions. If student has more than one submission for one assignment,than send only `one best` submission.
 
  #### Admin
