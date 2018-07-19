@@ -41,20 +41,20 @@ Send:
 * `GET /student/task/full-info?assId=...` - to get next informaton about task assignment by id:
 Send:
  ```javaScript
+{
+ taskId:
  {
- 	taskId:
- 	{
-   name,
-   description,
-   weight
-  },
-  deadline,
-  teacherId: 
-  {
-   name,
-   surname
-  }
+  name,
+  description,
+  weight
+ },
+ deadline,
+ teacherId: 
+ {
+  name,
+  surname
  }
+}
  ```
  * `GET /student/task/tasks-list?id=some_id` - to get array of all task of certain student, whom `_id` is `some_id`. Array is sorted: first comes task `without` submissions and only then `with` submissions. If student has more than one submissions for one assignment, sends only `one best` submission.
  Send:
