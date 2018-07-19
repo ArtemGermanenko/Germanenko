@@ -29,7 +29,8 @@ Sends:
  * `GET /teacher/task/full-info?taskId=...` - gets full information about task:
 
  Receives in query:
- ** `taskId`: String - 
+
+ `taskId`: String - id of a task  
 
  Sends:
  ```javaScript
@@ -42,12 +43,15 @@ Sends:
   outFiles: [ { link, name } ]
  }
  ```
- Query is id of task, which your want to get.
 
 #### Student
-* `GET /student/task/full-info?assId=...` - to get next informaton about task assignment by id:
+* `GET /student/task/full-info?assId=...` - gets full informaton about task assignment:
 
-Send:
+Receives in query:
+
+ `assId`: String - id of a assignment 
+
+Sends:
  ```javaScript
  {
   taskId:
@@ -64,9 +68,13 @@ Send:
   }
  }
  ```
- * `GET /student/task/tasks-list?id=some_id` - to get array of all task of certain student, whom `_id` is `some_id`. Array is sorted: first comes task `without` submissions and only then `with` submissions. If student has more than one submissions for one assignment, sends only `one best` submission.
+ * `GET /student/task/tasks-list?id=...` - gets array of all task of certain student. 
 
- Send:
+ Receives in query:
+
+ `id`: String - id of a student 
+
+ Sends:
  ```javaScript
  {
   _id,
@@ -91,5 +99,6 @@ Send:
   }
  }
  ```
+ Array is sorted: first comes task `without` submissions and only then `with` submissions. If student has more than one submissions for one assignment, sends only `one best` submission.
 
  #### Admin
