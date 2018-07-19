@@ -5,9 +5,9 @@
 ### Tasks
 
 #### Teacher
-* `GET /teacher/task/abbreviated-info` - `all active` tasks
+* `GET /teacher/task/abbreviated-info` - provides shortened information for all `active` tasks
 
-Send:
+Sends:
  ```javaScript
  {
   _id,
@@ -15,9 +15,9 @@ Send:
   weight
  }
  ```
-* `POST /teacher/task/assign` - to assign task to student
+* `POST /teacher/task/assign` - assigns task to student
 
- Body to receive:
+ Receives in body:
  ```javaScript
  {
   taskId,
@@ -26,9 +26,12 @@ Send:
   deadline (Number of miliseconds)
  }
  ```
- * `GET /teacher/task/full-info?taskId=...` - to get information about task:
+ * `GET /teacher/task/full-info?taskId=...` - gets full information about task:
 
- Send:
+ Receives in query:
+ ** `taskId`: String - 
+
+ Sends:
  ```javaScript
  {
   name, 
